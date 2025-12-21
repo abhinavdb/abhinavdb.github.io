@@ -646,7 +646,6 @@
 
         .hero-label { animation-delay: 0.1s; }
         .hero h1 { animation-delay: 0.2s; }
-        .health-check-cta { animation-delay: 0.3s; }
 
         /* Scroll animations */
         .migration-path {
@@ -676,7 +675,7 @@
         }
 
         .health-check-cta {
-            animation: glowPulse 3s ease-in-out infinite;
+            animation: fadeInUp 0.6s ease 0.3s forwards, glowPulse 3s ease-in-out 0.9s infinite;
         }
     </style>
 </head>
@@ -774,7 +773,7 @@
                         </svg>
                     </div>
                     <h3>High Availability & DR</h3>
-                    <p>Always-On, replication, failover clusters — I design and implement HA/DR solutions that keep your business running.</p>
+                    <p>SQL Server (Always-On, FCI, Replication) & PostgreSQL (Streaming Replication, Patroni) — I build HA/DR that keeps your business running.</p>
                 </div>
                 
                 <div class="service-card">
