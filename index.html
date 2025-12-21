@@ -18,11 +18,20 @@
         :root {
             --bg-primary: #0f1419;
             --bg-secondary: #1a2028;
+            --bg-tertiary: #232b35;
             --text-primary: #f7fafc;
             --text-secondary: #a0aec0;
             --accent: #63b3ed;
             --accent-hover: #4299e1;
+            --accent-glow: rgba(99, 179, 237, 0.3);
             --border: #2d3748;
+            --oracle: #f80000;
+            --sqlserver: #cc2927;
+            --postgresql: #336791;
+            --mysql: #4479a1;
+            --azure: #0089d6;
+            --aws: #ff9900;
+            --success: #48bb78;
         }
 
         * {
@@ -105,11 +114,11 @@
 
         /* Hero Section */
         .hero {
-            min-height: 100vh;
+            min-height: auto;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 8rem 2rem 4rem;
+            padding: 5.5rem 2rem 2rem;
             position: relative;
         }
 
@@ -127,7 +136,7 @@
         }
 
         .hero-content {
-            max-width: 800px;
+            max-width: 850px;
             text-align: center;
             position: relative;
             z-index: 1;
@@ -135,18 +144,18 @@
 
         .hero-label {
             display: inline-block;
-            padding: 0.5rem 1rem;
+            padding: 0.4rem 0.8rem;
             background: var(--bg-secondary);
             border: 1px solid var(--border);
             border-radius: 50px;
-            font-size: 0.875rem;
+            font-size: 0.8rem;
             color: var(--text-secondary);
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             letter-spacing: 0.5px;
         }
 
         .hero h1 {
-            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-size: clamp(2rem, 5vw, 3rem);
             font-weight: 700;
             line-height: 1.1;
             margin-bottom: 1.5rem;
@@ -157,45 +166,174 @@
             color: var(--accent);
         }
 
-        .hero-subtitle {
-            font-size: 1.25rem;
-            color: var(--text-secondary);
-            margin-bottom: 2.5rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
+        /* Free Health Check CTA Box */
+        .health-check-cta {
+            background: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary));
+            border: 1px solid var(--accent);
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-top: 0.5rem;
+            box-shadow: 0 0 30px var(--accent-glow);
         }
 
-        .hero-cta {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: var(--accent);
+        .health-check-badge {
+            display: inline-block;
+            background: var(--success);
             color: var(--bg-primary);
-            padding: 1rem 2rem;
-            border-radius: 8px;
+            padding: 0.3rem 0.6rem;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.75rem;
+        }
+
+        .health-check-cta h2 {
+            font-size: 1.25rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .health-check-cta p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .db-choice {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .db-choice-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: var(--bg-primary);
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            padding: 0.75rem 1.25rem;
+            color: var(--text-primary);
             text-decoration: none;
             font-weight: 600;
-            font-size: 1.1rem;
-            transition: all 0.2s ease;
-            border: none;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
             cursor: pointer;
         }
 
-        .hero-cta:hover {
-            background: var(--accent-hover);
-            transform: translateY(-2px);
+        .db-choice-btn:hover {
+            border-color: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
 
-        .hero-cta svg {
-            width: 20px;
-            height: 20px;
+        .db-choice-btn.sqlserver:hover {
+            border-color: var(--sqlserver);
+            box-shadow: 0 10px 30px rgba(204, 41, 39, 0.2);
+        }
+
+        .db-choice-btn.postgresql:hover {
+            border-color: var(--postgresql);
+            box-shadow: 0 10px 30px rgba(51, 103, 145, 0.2);
+        }
+
+        .db-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.65rem;
+            color: white;
+        }
+
+        .db-icon.sqlserver { background: var(--sqlserver); }
+        .db-icon.postgresql { background: var(--postgresql); }
+
+        .db-choice-text {
+            text-align: left;
+        }
+
+        .db-choice-text span {
+            display: block;
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+
+        /* Stats Ticker */
+        .stats-ticker {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .stats-ticker::before,
+        .stats-ticker::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 100px;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .stats-ticker::before {
+            left: 0;
+            background: linear-gradient(to right, var(--bg-secondary), transparent);
+        }
+
+        .stats-ticker::after {
+            right: 0;
+            background: linear-gradient(to left, var(--bg-secondary), transparent);
+        }
+
+        .ticker-track {
+            display: flex;
+            animation: ticker 30s linear infinite;
+        }
+
+        .ticker-track:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes ticker {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .ticker-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0 2.5rem;
+            white-space: nowrap;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .ticker-item strong {
+            color: var(--accent);
+            font-size: 1.1rem;
+        }
+
+        .ticker-divider {
+            color: var(--border);
+            padding: 0 1rem;
         }
 
         /* Services Section */
         .services {
             padding: 6rem 2rem;
-            background: var(--bg-secondary);
+            background: var(--bg-primary);
         }
 
         .container {
@@ -225,7 +363,7 @@
         }
 
         .service-card {
-            background: var(--bg-primary);
+            background: var(--bg-secondary);
             border: 1px solid var(--border);
             border-radius: 12px;
             padding: 2rem;
@@ -259,6 +397,98 @@
             font-size: 0.95rem;
         }
 
+        /* Migration Section */
+        .migrations {
+            padding: 6rem 2rem;
+            background: var(--bg-secondary);
+        }
+
+        .migrations-intro {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .migrations-intro p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 1rem auto 0;
+        }
+
+        .migration-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .migration-path {
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .migration-path:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .migration-box {
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-align: center;
+            min-width: 100px;
+            color: white;
+        }
+
+        .migration-box.oracle { background: linear-gradient(135deg, #f80000, #c50000); }
+        .migration-box.sqlserver { background: linear-gradient(135deg, #cc2927, #a31f1d); }
+        .migration-box.postgresql { background: linear-gradient(135deg, #336791, #264d6d); }
+        .migration-box.mysql { background: linear-gradient(135deg, #4479a1, #356789); }
+        .migration-box.onprem { background: linear-gradient(135deg, #4a5568, #2d3748); }
+        .migration-box.azure { background: linear-gradient(135deg, #0089d6, #0068a3); }
+        .migration-box.aws { background: linear-gradient(135deg, #ff9900, #cc7a00); }
+        .migration-box.upgrade { background: linear-gradient(135deg, #38a169, #2f855a); }
+
+        .migration-arrow {
+            display: flex;
+            align-items: center;
+            color: var(--accent);
+            flex-shrink: 0;
+        }
+
+        .migration-arrow svg {
+            width: 32px;
+            height: 32px;
+        }
+
+        .migration-category {
+            margin-bottom: 2rem;
+        }
+
+        .migration-category-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            padding-left: 0.5rem;
+            border-left: 3px solid var(--accent);
+        }
+
+        .migration-category-subtitle {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            padding-left: 0.5rem;
+        }
+
         /* Tech Stack */
         .tech-stack {
             display: flex;
@@ -280,6 +510,7 @@
         /* Booking Section */
         .booking {
             padding: 6rem 2rem;
+            background: var(--bg-primary);
         }
 
         .booking-wrapper {
@@ -311,6 +542,7 @@
             padding: 3rem 2rem;
             border-top: 1px solid var(--border);
             text-align: center;
+            background: var(--bg-secondary);
         }
 
         .footer-links {
@@ -359,12 +591,39 @@
                 padding: 7rem 1.5rem 3rem;
             }
 
-            .services, .booking {
+            .health-check-cta {
+                padding: 1.5rem;
+            }
+
+            .db-choice {
+                flex-direction: column;
+            }
+
+            .db-choice-btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .services, .migrations, .booking {
                 padding: 4rem 1.5rem;
+            }
+
+            .migration-path {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .migration-arrow {
+                transform: rotate(90deg);
             }
 
             .calendly-inline-widget {
                 height: 800px;
+            }
+
+            .ticker-item {
+                padding: 0 1.5rem;
+                font-size: 0.85rem;
             }
         }
 
@@ -387,8 +646,38 @@
 
         .hero-label { animation-delay: 0.1s; }
         .hero h1 { animation-delay: 0.2s; }
-        .hero-subtitle { animation-delay: 0.3s; }
-        .hero-cta { animation-delay: 0.4s; }
+        .health-check-cta { animation-delay: 0.3s; }
+
+        /* Scroll animations */
+        .migration-path {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+
+        .migration-path.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @keyframes arrowPulse {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(5px); }
+        }
+
+        .migration-path:hover .migration-arrow svg {
+            animation: arrowPulse 0.8s ease infinite;
+        }
+
+        /* Glow pulse for health check box */
+        @keyframes glowPulse {
+            0%, 100% { box-shadow: 0 0 30px var(--accent-glow); }
+            50% { box-shadow: 0 0 50px var(--accent-glow), 0 0 80px rgba(99, 179, 237, 0.1); }
+        }
+
+        .health-check-cta {
+            animation: glowPulse 3s ease-in-out infinite;
+        }
     </style>
 </head>
 <body>
@@ -397,6 +686,7 @@
         <a href="#" class="logo">abhinav<span>db</span>.com</a>
         <div class="nav-links">
             <a href="#services">Services</a>
+            <a href="#migrations">Migrations</a>
             <a href="https://calendly.com/abhinavtiwari_93/30min" target="_blank" rel="noopener" class="nav-cta">Book a Call</a>
         </div>
     </nav>
@@ -406,15 +696,59 @@
         <div class="hero-content">
             <span class="hero-label">SQL Server & PostgreSQL DBA — Azure / AWS</span>
             <h1>I fix <span class="highlight">slow queries</span> and prevent <span class="highlight">outages</span></h1>
-            <p class="hero-subtitle">Helping teams build reliable, high-performance databases. Performance tuning, HA/DR setup, migrations — done right.</p>
-            <a href="https://calendly.com/abhinavtiwari_93/30min" target="_blank" rel="noopener" class="hero-cta">
-                Book a Free Consultation
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-            </a>
+            
+            <!-- Free Health Check CTA - Main focus -->
+            <div class="health-check-cta">
+                <span class="health-check-badge">✓ Free for First-Time Clients</span>
+                <h2>Get Your Free Database Health Check</h2>
+                <p>30-minute call. I'll review your database performance and give you actionable recommendations — no strings attached.</p>
+                
+                <div class="db-choice">
+                    <a href="https://calendly.com/abhinavtiwari_93/30min" target="_blank" rel="noopener" class="db-choice-btn sqlserver">
+                        <div class="db-icon sqlserver">SQL</div>
+                        <div class="db-choice-text">
+                            SQL Server
+                            <span>Check my SQL Server health</span>
+                        </div>
+                    </a>
+                    <a href="https://calendly.com/abhinavtiwari_93/30min" target="_blank" rel="noopener" class="db-choice-btn postgresql">
+                        <div class="db-icon postgresql">PG</div>
+                        <div class="db-choice-text">
+                            PostgreSQL
+                            <span>Check my PostgreSQL health</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
         </div>
     </section>
+
+    <!-- Stats Ticker -->
+    <div class="stats-ticker">
+        <div class="ticker-track">
+            <div class="ticker-item"><strong>11+</strong> Years Experience</div>
+            <div class="ticker-item"><strong>200+</strong> Performance Issues Resolved</div>
+            <div class="ticker-item"><strong>40+</strong> Successful Migrations</div>
+            <div class="ticker-item"><strong>45TB+</strong> Databases Optimized</div>
+            <div class="ticker-item"><strong>27+</strong> Happy Clients</div>
+            <div class="ticker-item"><strong>11+</strong> Years Experience</div>
+            <div class="ticker-item"><strong>200+</strong> Performance Issues Resolved</div>
+            <div class="ticker-item"><strong>40+</strong> Successful Migrations</div>
+            <div class="ticker-item"><strong>45TB+</strong> Databases Optimized</div>
+            <div class="ticker-item"><strong>27+</strong> Happy Clients</div>
+            <!-- Duplicate for seamless loop -->
+            <div class="ticker-item"><strong>11+</strong> Years Experience</div>
+            <div class="ticker-item"><strong>200+</strong> Performance Issues Resolved</div>
+            <div class="ticker-item"><strong>40+</strong> Successful Migrations</div>
+            <div class="ticker-item"><strong>45TB+</strong> Databases Optimized</div>
+            <div class="ticker-item"><strong>27+</strong> Happy Clients</div>
+            <div class="ticker-item"><strong>11+</strong> Years Experience</div>
+            <div class="ticker-item"><strong>200+</strong> Performance Issues Resolved</div>
+            <div class="ticker-item"><strong>40+</strong> Successful Migrations</div>
+            <div class="ticker-item"><strong>45TB+</strong> Databases Optimized</div>
+            <div class="ticker-item"><strong>27+</strong> Happy Clients</div>
+        </div>
+    </div>
 
     <!-- Services Section -->
     <section class="services" id="services">
@@ -449,19 +783,128 @@
                             <path stroke-linecap="round" stroke-linejoin="round" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4" />
                         </svg>
                     </div>
-                    <h3>Migrations & Upgrades</h3>
-                    <p>Moving to Azure SQL? Upgrading SQL Server versions? I handle complex migrations with minimal downtime.</p>
+                    <h3>Database Migrations</h3>
+                    <p>Complex migrations with minimal downtime. Heterogeneous, homogeneous, on-prem to cloud — I've done them all.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Migrations Section -->
+    <section class="migrations" id="migrations">
+        <div class="container">
+            <div class="migrations-intro">
+                <p class="section-title">Migration Expertise</p>
+                <h2 class="section-heading">I move databases — safely</h2>
+                <p>Whether you're switching platforms, moving to the cloud, or upgrading versions — I handle the complexity so you don't have to.</p>
+            </div>
+
+            <!-- Heterogeneous Migrations -->
+            <div class="migration-category">
+                <h3 class="migration-category-title">Heterogeneous Migrations</h3>
+                <p class="migration-category-subtitle">Cross-platform migrations between different database engines</p>
+                
+                <div class="migration-grid">
+                    <div class="migration-path">
+                        <div class="migration-box oracle">Oracle</div>
+                        <div class="migration-arrow">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                            </svg>
+                        </div>
+                        <div class="migration-box sqlserver">SQL Server</div>
+                    </div>
+
+                    <div class="migration-path">
+                        <div class="migration-box sqlserver">SQL Server</div>
+                        <div class="migration-arrow">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                            </svg>
+                        </div>
+                        <div class="migration-box postgresql">PostgreSQL</div>
+                    </div>
+
+                    <div class="migration-path">
+                        <div class="migration-box mysql">MySQL</div>
+                        <div class="migration-arrow">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                            </svg>
+                        </div>
+                        <div class="migration-box postgresql">PostgreSQL</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cloud Migrations -->
+            <div class="migration-category">
+                <h3 class="migration-category-title">Cloud Migrations</h3>
+                <p class="migration-category-subtitle">Move from on-premises infrastructure to Azure or AWS</p>
+                
+                <div class="migration-grid">
+                    <div class="migration-path">
+                        <div class="migration-box onprem">On-Premises</div>
+                        <div class="migration-arrow">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                            </svg>
+                        </div>
+                        <div class="migration-box azure">Azure SQL</div>
+                    </div>
+
+                    <div class="migration-path">
+                        <div class="migration-box onprem">On-Premises</div>
+                        <div class="migration-arrow">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                            </svg>
+                        </div>
+                        <div class="migration-box aws">AWS RDS</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Homogeneous Migrations -->
+            <div class="migration-category">
+                <h3 class="migration-category-title">Homogeneous Migrations</h3>
+                <p class="migration-category-subtitle">Version upgrades within the same platform</p>
+                
+                <div class="migration-grid">
+                    <div class="migration-path">
+                        <div class="migration-box sqlserver">SQL Server 2012/2014</div>
+                        <div class="migration-arrow">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                            </svg>
+                        </div>
+                        <div class="migration-box upgrade">SQL Server 2022</div>
+                    </div>
+
+                    <div class="migration-path">
+                        <div class="migration-box postgresql">PostgreSQL 9.x/10</div>
+                        <div class="migration-arrow">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                            </svg>
+                        </div>
+                        <div class="migration-box upgrade">PostgreSQL 16</div>
+                    </div>
                 </div>
             </div>
 
             <div class="tech-stack">
                 <span class="tech-tag">SQL Server</span>
                 <span class="tech-tag">PostgreSQL</span>
+                <span class="tech-tag">Oracle</span>
+                <span class="tech-tag">MySQL</span>
                 <span class="tech-tag">Azure SQL</span>
                 <span class="tech-tag">AWS RDS</span>
                 <span class="tech-tag">Azure Synapse</span>
                 <span class="tech-tag">Aurora</span>
                 <span class="tech-tag">Always-On AG</span>
+                <span class="tech-tag">DMS</span>
+                <span class="tech-tag">SSIS</span>
                 <span class="tech-tag">PowerShell</span>
             </div>
         </div>
@@ -477,7 +920,12 @@
             </div>
             
             <!-- Calendly inline widget -->
-            <div class="calendly-inline-widget" data-url="https://calendly.com/abhinavtiwari_93/30min?hide_gdpr_banner=1&background_color=0f1419&text_color=f7fafc&primary_color=63b3ed"></div>
+            <div class="calendly-inline-widget" data-url="https://calendly.com/abhinavtiwari_93/30min?hide_gdpr_banner=1&amp;background_color=0f1419&amp;text_color=f7fafc&amp;primary_color=63b3ed"></div>
+            
+            <!-- Fallback if widget doesn't load -->
+            <noscript>
+                <a href="https://calendly.com/abhinavtiwari_93/30min" target="_blank" rel="noopener" style="display:inline-block;margin-top:2rem;padding:1rem 2rem;background:#63b3ed;color:#0f1419;border-radius:8px;font-weight:600;text-decoration:none;">Book on Calendly →</a>
+            </noscript>
         </div>
     </section>
 
@@ -508,5 +956,28 @@
 
     <!-- Calendly JS -->
     <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+
+    <!-- Scroll Animation Script -->
+    <script>
+        // Add visible class to migration paths on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, index * 100);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.migration-path').forEach(path => {
+            observer.observe(path);
+        });
+    </script>
 </body>
 </html>
