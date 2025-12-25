@@ -507,10 +507,95 @@
             color: var(--text-secondary);
         }
 
+        /* Testimonials Section */
+        .testimonials {
+            padding: 6rem 2rem;
+            background: var(--bg-primary);
+        }
+
+        .testimonials-intro {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .testimonial-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.75rem;
+            border-left: 4px solid var(--accent);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--accent);
+        }
+
+        .testimonial-quote {
+            color: var(--accent);
+            font-size: 2.5rem;
+            line-height: 1;
+            margin-bottom: 0.75rem;
+        }
+
+        .testimonial-text {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 1.25rem;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .testimonial-author-info h4 {
+            color: var(--text-primary);
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .testimonial-author-info p {
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+        }
+
+        .testimonial-verify {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            color: #0077b5;
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 500;
+            transition: opacity 0.2s ease;
+        }
+
+        .testimonial-verify:hover {
+            opacity: 0.8;
+        }
+
+        .testimonial-verify svg {
+            width: 16px;
+            height: 16px;
+        }
+
         /* Booking Section */
         .booking {
             padding: 6rem 2rem;
-            background: var(--bg-primary);
+            background: var(--bg-secondary);
         }
 
         .booking-wrapper {
@@ -542,7 +627,7 @@
             padding: 3rem 2rem;
             border-top: 1px solid var(--border);
             text-align: center;
-            background: var(--bg-secondary);
+            background: var(--bg-primary);
         }
 
         .footer-links {
@@ -604,7 +689,7 @@
                 justify-content: center;
             }
 
-            .services, .migrations, .booking {
+            .services, .migrations, .testimonials, .booking {
                 padding: 4rem 1.5rem;
             }
 
@@ -624,6 +709,11 @@
             .ticker-item {
                 padding: 0 1.5rem;
                 font-size: 0.85rem;
+            }
+
+            .testimonial-author {
+                flex-direction: column;
+                align-items: flex-start;
             }
         }
 
@@ -648,13 +738,13 @@
         .hero h1 { animation-delay: 0.2s; }
 
         /* Scroll animations */
-        .migration-path {
+        .migration-path, .testimonial-card {
             opacity: 0;
             transform: translateY(20px);
             transition: all 0.5s ease;
         }
 
-        .migration-path.visible {
+        .migration-path.visible, .testimonial-card.visible {
             opacity: 1;
             transform: translateY(0);
         }
@@ -686,6 +776,7 @@
         <div class="nav-links">
             <a href="#services">Services</a>
             <a href="#migrations">Migrations</a>
+            <a href="#testimonials">Testimonials</a>
             <a href="https://calendly.com/abhinavtiwari_93/30min" target="_blank" rel="noopener" class="nav-cta">Book a Call</a>
         </div>
     </nav>
@@ -909,6 +1000,90 @@
         </div>
     </section>
 
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="testimonials-intro">
+                <p class="section-title">Client Feedback</p>
+                <h2 class="section-heading">What people say</h2>
+            </div>
+            
+            <div class="testimonials-grid">
+                <!-- Testimonial 1 - Eanen Cohn -->
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">"</div>
+                    <p class="testimonial-text">Abhinav is one of the most talented SQL Server optimization people I have encountered in my career. He has a genuine drive to continually seek knowledge and improve his understanding of not just SQL Server but other RDBMS platforms as well as cloud native DB PaaS solutions.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-author-info">
+                            <h4>Eanen Cohn</h4>
+                            <p>Principal IT Architect - Data Platforms</p>
+                        </div>
+                        <a href="https://www.linkedin.com/in/abhinav-tiwari-44aa9386/" target="_blank" rel="noopener" class="testimonial-verify">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                            Verify
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 - Jeremiah Dey -->
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">"</div>
+                    <p class="testimonial-text">Abhinav was a standout DBA with our database team. He provided quality analysis of problems with excellent technical depth for understanding the cause and actionable suggestions. He was essential on numerous critical projects and active operations issues.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-author-info">
+                            <h4>Jeremiah Dey</h4>
+                            <p>Director, Database Architecture @ McKesson</p>
+                        </div>
+                        <a href="https://www.linkedin.com/in/abhinav-tiwari-44aa9386/" target="_blank" rel="noopener" class="testimonial-verify">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                            Verify
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 - Nitin Goel -->
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">"</div>
+                    <p class="testimonial-text">I had the pleasure of working with Abhinav on a critical data migration project over Azure Cloud. His deep expertise in Azure cloud data movement, combined with a proactive and collaborative approach, made a significant impact for our project success.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-author-info">
+                            <h4>Nitin Goel</h4>
+                            <p>Technical Head - Cloud Migration</p>
+                        </div>
+                        <a href="https://www.linkedin.com/in/abhinav-tiwari-44aa9386/" target="_blank" rel="noopener" class="testimonial-verify">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                            Verify
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Testimonial 4 - Kavya Sachdeva -->
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">"</div>
+                    <p class="testimonial-text">We hired Abhinav as a DBA for a migration project. The post migration performance issues were persistent and challenging — he investigated and induced effective measures by creating indexes and other SQL server adjustments. I highly recommend him.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-author-info">
+                            <h4>Kavya Sachdeva</h4>
+                            <p>Senior Manager, Project Development</p>
+                        </div>
+                        <a href="https://www.linkedin.com/in/abhinav-tiwari-44aa9386/" target="_blank" rel="noopener" class="testimonial-verify">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                            Verify
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Booking Section -->
     <section class="booking" id="book">
         <div class="booking-wrapper">
@@ -919,7 +1094,7 @@
             </div>
             
             <!-- Calendly inline widget -->
-            <div class="calendly-inline-widget" data-url="https://calendly.com/abhinavtiwari_93/30min?hide_gdpr_banner=1&amp;background_color=0f1419&amp;text_color=f7fafc&amp;primary_color=63b3ed"></div>
+            <div class="calendly-inline-widget" data-url="https://calendly.com/abhinavtiwari_93/30min?hide_gdpr_banner=1&background_color=0f1419&text_color=f7fafc&primary_color=63b3ed"></div>
             
             <!-- Fallback if widget doesn't load -->
             <noscript>
@@ -958,7 +1133,7 @@
 
     <!-- Scroll Animation Script -->
     <script>
-        // Add visible class to migration paths on scroll
+        // Add visible class to migration paths and testimonials on scroll
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -974,8 +1149,8 @@
             });
         }, observerOptions);
 
-        document.querySelectorAll('.migration-path').forEach(path => {
-            observer.observe(path);
+        document.querySelectorAll('.migration-path, .testimonial-card').forEach(item => {
+            observer.observe(item);
         });
     </script>
 </body>
